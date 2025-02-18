@@ -30,7 +30,7 @@ set_time_limit(0);
 $paths = [];
 $preset = null;
 $dry = true;
-$parallel = 10;
+$parallel = '4';
 
 for ($i = 1; $i < count($argv); $i++) {
 	$arg = $argv[$i];
