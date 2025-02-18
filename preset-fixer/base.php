@@ -12,7 +12,8 @@ $config->registerCustomFixers([
 	new NetteCodingStandard\Fixer\ClassNotation\ClassAndTraitVisibilityRequiredFixer,
 	new NetteCodingStandard\Fixer\FunctionNotation\MethodArgumentSpaceFixer,
 ]);
-$config->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect());
+//$config->setParallelConfig(PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect());
+$config->setParallelConfig(new PhpCsFixer\Runner\Parallel\ParallelConfig(4));
 $config->registerCustomFixers(new PhpCsFixerCustomFixers\Fixers);
 $config->setUsingCache(false);
 $config->setIndent("\t");
