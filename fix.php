@@ -30,6 +30,7 @@ set_time_limit(0);
 $paths = [];
 $preset = null;
 $dry = true;
+$parallel = 10;
 
 for ($i = 1; $i < count($argv); $i++) {
 	$arg = $argv[$i];
@@ -37,6 +38,8 @@ for ($i = 1; $i < count($argv); $i++) {
 		$preset = $argv[++$i];
 	} elseif ($arg === '--fix' || $arg === 'fix') {
 		$dry = false;
+	} elseif ($arg === '--parallel') {
+		$parallel = $argv[++$i];
 	} elseif ($arg === 'check') {
 		// ignore
 	} else {
@@ -119,7 +122,7 @@ passthru(
 	. ' --extensions=php,phpt'
 	. ' --runtime-set ignore_warnings_on_exit true'
 	. ' --no-cache'
-	. ' --parallel=10'
+	. ' --parallel=' . escapeshellarg($parallel)
 	. ' --standard=' . escapeshellarg($presetFile)
 	. ' --file-list=' . escapeshellarg($fileList),
 	$code
